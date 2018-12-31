@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			table {
+				border: 1px solid black;
+			}
+			
+			table {
+				width: 100%;
+			}
+			
+			th,td{
+				height: 50px;
+			}
+			th,	td {
+				border-bottom: 1px solid #ddd;
+			}
+			
+		</style>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<table>
+				<tr>
+					<th>序号</th>
+					<th>商品名称</th>
+					<th>商品价格</th>
+					<th>购买数量</th>
+					<th>操作</th>
+				</tr>
+				<tr v-for="(data,index) in Json">
+					<td>{{data.id}}</td>
+					<td>{{data.name}}</td>
+					<td>{{data.price}}</td>
+					<td><button @click='delect(index)'>-</button><input type="text" v-model='data.count' /><button @click='add(index)'>+</button></td>
+					<td>{{data.id}}</td>
+				</tr>
+			</table>
+			<span>总价：{{tatalpris}}</span>
+		</div>
+		<script>
+			
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					Json: [{
+							id: 1,
+							name: "iphone 8",
+							price: "5555",
+							count: "1"
+						},
+						{
+							id: 2,
+							name: "iphone 8",
+							price: "5555",
+							count: "1"
+						},
+						{
+							id: 3,
+							name: "iphone 8",
+							price: "5555",
+							count: "1"
+						},
+						{
+							id: 4,
+							name: "iphone 8",
+							price: "5555",
+							count: "1"
+						},
+						{
+							id: 5,
+							name: "iphone 8",
+							price: "5555",
+							count: "1"
+						}
+					],
+					tatalpris:''
+				},
+				methods:{
+					ss:function(){
+						var value=0;
+						for(var i=0;i<this.Json.length;i++){
+							value+=this.Json[i].price*this.Json[i].count;
+						}
+						console.log(value)
+						this.tatalpris=value;
+						
+					},
+					add:function(index){
+					 this.Json[index].count++;
+					 this.ss()
+					},
+					delect:function(index){
+						this.Json[index].count--;
+						this.ss()
+					}
+				}
+			})
+			vm.ss()
+		</script>
+	</body>
+
+</html>

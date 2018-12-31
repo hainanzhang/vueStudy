@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			千米：<input type="text" v-model='km' />
+			米：<input type="text" v-model='m' /><br />
+			千米：<span>{{km}}</span>
+			米：<span>{{m}}</span>
+		</div>
+		<p id="info"></p>
+		<script>
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					km:0,
+					m:0
+				},
+				methods: {},
+				computed: {},
+				watch:{
+					km:function(val){
+						this.km=val
+						this.m=val*1000;
+					},
+					m:function(val){
+						this.m=val;
+						this.km=val/1000;
+					}
+				}
+			})
+//			vm.$watch('km', function(newValue, oldValue) {
+//				// 这个回调将在 vm.kilometers 改变后调用
+//				document.getElementById("info").innerHTML = "修改前值为: " + oldValue + "，修改后值为: " + newValue;
+//			})
+			vm.$watch('km',function(newValue,olbValue){
+				document.getElementById('info').innerHTML="修改前的值："+olbValue+",修改后值为："+newValue;
+			})
+		</script>
+	</body>
+</html>
