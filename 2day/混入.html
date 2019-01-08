@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+	</head>
+
+	<body>
+		<section id="app">
+
+		</section>
+		<script>
+			/*var mixin = {
+							methods: {
+								hellworld: function() {
+									document.write('HelloWorld 方法' + '<br>');
+								},
+								samemethod: function() {
+									document.write('Mixin：相同方法名' + '<br>');
+								}
+							}
+						};
+						var vm = new Vue({
+							mixins: [mixin],
+							methods: {
+								start: function() {
+									document.write('start 方法' + '<br>');
+								},
+								samemethod: function() {
+									document.write('Main：相同方法名' + '<br>');
+								}
+							}
+						});
+						vm.hellworld();
+						vm.start();
+						vm.samemethod();*/
+
+			/*var mixin = {
+				created: function() {
+					document.write('混入调用' + '<br>')
+				}
+			}
+			new Vue({
+				mixins: [mixin],
+				created: function() {
+					document.write('组件调用' + '<br>')
+				}
+			});*/
+			
+			/*var mixin = {
+				methods:{
+					created1: function(){
+						console.log("混入调用")
+					}
+				}
+					
+			}
+			var vm=new Vue({
+				mixins:[mixin],
+				methods:{
+					created:function(){
+						console.log("组件调用")
+					}
+				}
+					
+			})
+			vm.created();
+			vm.created1();*/
+			
+			
+			
+			
+			var mixin={
+				methods:{
+					aa:function(){
+						console.log('aa')
+					}
+				}
+			}
+			var vm=new Vue({
+				mixins:[mixin],
+				methods:{
+					bb:function(){
+						console.log('bb')
+					}
+				}
+			})
+			
+			vm.bb();
+			vm.aa()
+		</script>
+	</body>
+
+</html>

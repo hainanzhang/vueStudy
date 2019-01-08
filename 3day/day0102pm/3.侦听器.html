@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <p>
+            {{msg}}
+        </p>
+        <p>
+            姓名： {{obj.name}}, 年龄： {{obj.age}}
+        </p>
+
+        <p>{{arr}}</p>
+
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'hello vue',
+                obj: {
+                    name: 'zhangsan',
+                    age: 40
+                },
+                arr: ['a', 'b', 'c', 'd']
+            },
+            // 侦听,实例创建后就会添加监听
+            watch: {
+                // 监听的简写方式
+                msg: function (newVal, oldVal) {
+                    console.log('msg变化了');
+                    console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+                },
+                // 监听的完整写法
+                msg: {
+                    handler: function (newVal, oldVal) {
+                        console.log('msg变化了');
+                        console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+                    }
+                },
+
+
+                // 监听对象，仅仅只能监听引用有没有发生变化
+                obj: function (newVal, oldVal) {
+                    console.log('obj变化了');
+                    console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+                },
+
+                //监听对象内部的变化
+                obj: {
+                    handler: function (newVal, oldVal) {
+                        console.log('obj变化了');
+                        console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+                    },
+                    deep: true
+                },
+
+                // 监听对象属性的变化
+                'obj.name': function (newVal, oldVal) {
+                    console.log('obj.name变化了');
+                    console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+                },
+
+                // 数组的变化，无论是内容发生变化还是引用发生变化，都不需要deep设置为true
+                // 能够之间监听到变化
+                arr: function (newVal, oldVal) {
+                    console.log('arr变化了');
+                    console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+                },
+
+                // 多个监听
+                msg: [
+                    function handler1() {
+                        console.log('监听msg变化了1');
+                    },
+                    function handler2() {
+                        console.log('监听msg变化了2');
+                    }
+                ]
+
+            }
+        })
+
+
+        // 配置侦听器， 监听可以控制
+        // 参数1：需要监听的属性，属性的路径，函数
+        // 参数2：监听的回调方法
+        // 参数3：监听的配置项
+        // 返回值是一个移除监听的方法
+        // (这样写也就是直接创建了一个监听，有点类似定时器，unwatch名字可以随意取，有多少个监听就要有多少个不同名字)
+        var unwatch = vm.$watch('msg', function (newVal, oldVal) {
+            console.log('msg变化了');
+            console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+        });
+
+        // 移除监听
+        // (移除时就对应名字加括号)
+        unwatch();
+
+    // vm.$watch('obj.name', function(newVal, oldVal){
+    //     console.log('obj.name变化了');
+    //     console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+    // });
+
+
+    // vm.$watch('obj', function(newVal, oldVal){
+    //     console.log('obj变化了');
+    //     console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+    // }, {
+    //     deep: true
+    // });
+
+
+    // vm.$watch(function(){
+    //     return this.msg.length;
+    // }, function(newVal, oldVal){
+    //     console.log('msg.length变化了');
+    //     console.log('oldVal: ', oldVal, 'newVal: ', newVal);
+    // }, {
+    //     deep: true
+    // });
+
+
+    </script>
+
+</body>
+
+</html>

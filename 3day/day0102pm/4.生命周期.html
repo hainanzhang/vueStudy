@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+
+            <div ref="mydiv">{{msg}}</div>
+            
+            <p ref="myp">test</p>
+
+    </div>
+
+
+
+    
+    <script src="vue.js"></script>
+    <script>
+    // vue生命周期：实例从创建到销毁的一系列过程
+    // 生命周期勾子/生命周期函数/勾子函数：在这一系列过程中提供给用户操作的方法
+    // 勾子函数是会被vue实例自身调用的。
+    var vm = new Vue({
+        el: '#app',
+        // template: '<div id="app"><div ref="mydiv">{{msg}}</div><p ref="myp">test</p></div>',
+        data: {
+            msg: 'hello world',
+            num: 20
+        },
+        methods: {
+
+        },
+        beforeCreate: function(){
+            console.log('beforeCreate...');
+            console.log(this.msg);
+        },
+        created: function(){
+            console.log('created...');
+            console.log(this.msg);
+            console.log(document.querySelector('#app'));
+
+            //可以操作数据
+        },
+        beforeMount: function(){
+            console.log('beforeMount');
+            console.log(document.querySelector('#app'));
+        },
+        mounted: function(){
+            console.log('mounted...');
+            console.log(document.querySelector('#app'));
+
+            // 可以操作dom
+            // 不建议使用document操作dom
+            console.log(this.$refs);
+        },
+
+        beforeDestroy: function(){
+            console.log('beforeDestroy...');
+        },
+
+        destroyed: function(){
+            console.log('destroyed...');
+
+        },
+
+        beforeUpdate: function(){
+            console.log('beforeUpdate...');
+            console.log(this.msg);
+            console.log(this.$refs.mydiv.innerText);
+
+        },
+        updated: function(){
+            console.log('updated...');
+            console.log(this.msg);
+            console.log(this.$refs.mydiv.innerText);
+
+        }
+
+    })
+
+
+    /*
+    vue实例初始化：
+    1.new Vue()
+
+    2.加载初始化事件，读取生命周期勾子函数
+
+    3.beforeCreate()
+
+    4.读取data（添加数据观测），computed，methods，watch，components
+    
+    5.created()
+
+
+    vue实例挂载：
+    6.判断是否有el配置项
+        如果没有，等待$mount()执行，再向下执行实例的挂载。
+
+    7.判断是否有template配置项
+        如果没有，把el.outerHTML当成template
+
+    8.编译tempalte
+
+    9.beforeMount()
+
+    10.将编译好的template替换掉dom中el对应的dom
+
+    11.mounted()
+
+
+    vue实例销毁:
+    当vm.$destroy();调用时，实例会销毁。
+    
+    12.beforeDestroy();
+
+    13.移除监听，移除引用
+
+    14.destroyed();
+
+
+    在vue实例工作过程中，数据变化，导致dom变化：
+    数据已经发生变化
+
+    beforeUpdate()
+
+    重新渲染dom
+
+    updated();
+
+
+
+
+    */
+    
+    
+    </script>
+
+</body>
+</html>

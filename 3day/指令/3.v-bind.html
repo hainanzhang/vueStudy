@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- 
+            v-bind绑定标签属性
+
+            src   
+            href
+            
+            title
+            name
+            id
+            alt
+            value
+            type
+            
+            target
+            .......
+
+            class   style
+
+
+
+         -->
+
+         <img v-bind:src="imgPath" alt="">
+         <!-- 简写方式 -->
+         <img :src="imgPath" alt="">
+
+         <a :href="link">百度一下</a>
+		
+
+
+
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            imgPath: 'https://cn.vuejs.org/images/logo.png',
+            link: 'https://www.baidu.com'
+        }
+    })
+    
+    </script>
+    
+</body>
+</html>

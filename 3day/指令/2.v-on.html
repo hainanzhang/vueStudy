@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 200px;
+        height: 200px;
+        background: red;
+        margin: 10px;
+    }
+    .box1{
+        background: palevioletred;
+        padding: 30px;
+    }
+    .box2{
+        background: olive;
+        padding: 30px;
+    }
+    .box3{
+        background: darkorange;
+        padding: 30px;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- 
+            绑定事件
+            简写方式
+            传参
+         -->
+        <!-- <div class="box" v-on:click="boxAction"></div> -->
+        <!-- <div class="box" @click="boxAction"></div> -->
+        <!-- <div class="box" @click="boxAction(message, $event)"></div> -->
+
+        <!-- <div class="box" @mousemove="boxAction(message, $event)"></div> -->
+
+
+         <!-- 
+             修饰符
+             .stop   阻止事件冒泡
+             .prevent 阻止默认事件
+             .capture  事件捕获
+             .self  事件target为标签对象本身时才触发
+             .once   事件触发一次
+
+          -->
+
+          <div class="box1" @click="action1">
+              box1
+              <div class="box2" @click="action2">
+                  box2
+                  <div class="box3" @click.once="action3">
+                      box3
+                  </div>
+              </div>
+          </div>
+
+          <!-- <input type="text" @keyup.13="keyAction"> -->
+          <input type="text" @keydown.f1="keyAction">
+
+
+
+
+    </div>
+    
+    <script src="../vue.js"></script>
+    <script>
+
+
+    Vue.config.keyCodes.f1 = 112
+
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello'
+        },
+        methods: {
+            boxAction: function(msg, ev){
+                alert('点击了');
+                console.log(msg);
+                console.log(ev);
+                
+            },
+            action1: function(ev){
+                console.log(1);
+                console.log(ev);
+            },
+            action2: function(ev){
+                console.log(2);
+                console.log(ev);
+            },
+            action3: function(){
+                console.log(3);
+            },
+            keyAction(ev){
+                console.log('按了键盘');
+                console.log(ev);
+            }
+        }
+    })
+
+
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box01{
+				height: 300px;
+				width: 300px;
+				background: red;
+				margin: 0 auto;
+			}
+			.box02{
+				height: 200px;
+				width: 200px;
+				background: yellow;
+				margin: 0 auto;
+			}
+			.box03{
+				height: 100px;
+				width: 100px;
+				margin: 0 auto;
+				background: saddlebrown;
+			}
+		</style>
+	</head>
+	<body>
+		<section id="app">
+			 <!-- v-for
+            遍历 数字  字符串  对象  数组
+        -->
+        	<!--<li v-for='(itme,index) in numder'>{{itme}}------------{{index}}</li>
+        	
+        	<li v-for='(itme,index) in str'>{{itme}}-------{{index}}</li>
+        	<li v-for='(itme,key,index) in obj'>{{itme}}----{{key}}---{{index}}</li>
+        	<li v-for='(itme,index) in arr'>{{itme}}-------{{index}}</li>-->
+        	<div class="box01" @click="box01">
+        		<div class="box02" @click='box02'>
+        			<div class="box03" @keyCodes='box03'>
+        				
+        			</div>
+        		</div>
+        	</div>
+        	<input type="text" @keyup.9='keyCodes' />
+		</section>
+		<script>
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					numder:3,
+					str:'zjhsdks',
+					obj:{
+						name:'zhang',
+						age:12
+					},
+					arr:['nans','age','sss','ds']
+				},
+				methods:{
+					box01:() =>{
+						console.log('我是box01')
+					},
+					box02:(ev) =>{
+						console.log('我是box02'),
+						console.log(ev.keyCode)
+					},
+					box03:() =>{
+						console.log('我是box03')
+					},
+					keyCodes:function (ev){
+						console.log('我按下了')
+						console.log(ev.which)
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

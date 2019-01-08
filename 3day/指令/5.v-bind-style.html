@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+
+        <!-- 绑定字符串 -->
+        <div style="width: 100px; height: 100px;" :style="styleVal">
+            test
+        </div>
+
+        <!-- 绑定对象 -->
+        <div style="width: 100px; height: 100px;" :style="styleObj">
+                test
+            </div>
+        
+        <!-- 绑定数组 -->
+        <div :style="[{width: '100px'}, {height: '100px'}, styleObj]"></div>
+
+
+
+    </div>
+    
+    <script src="../vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            styleVal: 'background: red;',
+            styleObj: {
+                // 'background-color': 'red',
+                backgroundColor: 'red',
+                margin: '10px'
+            }
+        }
+    })
+    
+    </script>
+
+</body>
+</html>

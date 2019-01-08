@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+
+        姓名：{{fullName}}
+
+    </div>
+
+    <script src="vue.js"></script>
+
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'San',
+            lastName: 'Zhang'
+        },
+        computed: {
+            // 计算属性的简写方式
+            // fullName: function(){
+            //     return this.firstName + ' ' + this.lastName;
+            // }
+
+            // 计算属性的完整写法
+            fullName: {
+                get: function(){
+                    console.log('get方法执行了');
+                    return this.firstName + ' ' + this.lastName;
+                },
+                set: function(val){
+                    console.log('set方法执行了');
+                    console.log(val);
+                    // 修改fullName依赖属性的值，fullName才能变化
+                    var arr = val.split(' ');
+                    this.firstName = arr[0];
+                    this.lastName = arr[arr.length - 1];
+                }
+            }
+
+        }
+    })
+    
+    
+    </script>
+    
+</body>
+</html>

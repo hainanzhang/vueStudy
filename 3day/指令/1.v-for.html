@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <!-- v-for
+            遍历 数字  字符串  对象  数组
+        -->
+        <div>
+            <!-- 遍历数字(正整数) -->
+            <p v-for="(item, index) in num" v-bind:key="index">
+            <!-- <p v-for="(item, index) in 5"> -->
+                {{index}}---------------{{item}}
+            </p>
+        </div>
+
+        <div>
+            <!-- 遍历字符串 -->
+            <!-- <p v-for="(item, index) in str"> -->
+            <p v-for="(item, index) in 'bye'" v-bind:key="index">
+                    {{index}}---------------{{item}}
+            </p>
+        </div>
+
+        <!-- 遍历对象 -->
+        <!-- <p v-for="(item, key, index) in obj"> -->
+        <p v-for="(item, key, index) in {a: 1, b: 2}">
+            {{key}}-----{{item}}----{{index}}
+        </p>
+
+        <!-- 遍历数组 -->
+        <!-- <p v-for="(item, index) in arr"> -->
+        <p v-for="(item, index) in [1,2,3]">
+            {{index}}-------------{{item}}
+        </p>
+
+
+        <!-- 为了提高v-for指令的性能，需要使用key值作为唯一标识，但是不建议使用index -->
+
+
+
+        <!-- 在v-for指令和v-if/v-show指令同时存在一个标签时，v-for先执行。 -->
+        <!-- <ul>
+            <li v-for   v-if ></li>
+            <li v-for   v-show ></li>
+        </ul> -->
+
+
+
+        <template v-for="item in arr">
+            <h1>{{item.name}}</h1>
+            <p>{{item.age}}</p>
+        </template>
+
+        <ul>
+            <template v-for="item in arr">
+                <li v-on v-bind -bind:class  v-bind:title >
+                    <h1>{{item.name}}</h1>
+                    <p>{{item.age}}</p>
+                </li>
+            </template>
+        </ul>
+
+
+
+
+
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                num: 4,
+                str: 'hello',
+                obj: {
+                    name: 'zhangsan',
+                    age: 10,
+                    height: 130
+                },
+                arr: [
+                    {name: 'zhangsan', age: 14},
+                    {name: 'lisi', age: 23},
+                    {name: 'wangwu', age: 24}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

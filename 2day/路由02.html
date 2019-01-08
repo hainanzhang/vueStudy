@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+		<script src="https://cdn.staticfile.org/vue-router/2.7.0/vue-router.min.js"></script>
+	</head>
+
+	<body>
+		<div id="app">
+			<h1>Hello App!</h1>
+			<p>
+				<router-link to="/foo">Go to Foo</router-link>
+				<router-link to="/bar">Go to Bar</router-link>
+			</p>
+			<!-- 路由出口 -->
+			<!-- 路由匹配到的组件将渲染在这里 -->
+			<router-view></router-view>
+		</div>
+		<script>//			const Foo = {
+//				template: '<div>foo1223</div>'
+//			}
+//			const Bar = {
+//				template: '<div>bar1231</div>'
+//			}
+//			const routes = [{
+//					path: '/foo',
+//					component: Foo
+//				},
+//				{
+//					path: '/bar',
+//					component: Bar
+//				}
+//			]
+//			const router = new VueRouter({
+//				routes // （缩写）相当于 routes: routes
+//			})
+//			const app = new Vue({
+//				router
+//			}).$mount('#app')
+
+import BaseButton from 'lx01.js'
+export default {
+	components: {
+		BaseButton,
+	}
+}
+
+const Foo = {
+	template: '<div>foo</div>'
+}
+const Bar = {
+	template: '<div>bar</div>'
+}
+const routes = [{
+		path: '/foo',
+		component: Foo
+	},
+	{
+		path: '/bar',
+		component: Bar
+	}
+]
+const router = new VueRouter({
+	routes
+})
+const app = new Vue({
+	router
+}).$mount('#app')</script>
+	</body>
+
+</html>

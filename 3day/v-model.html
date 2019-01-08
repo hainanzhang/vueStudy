@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<script src="vue.js"></script>
+	<body>
+		<div id="app">
+			<!--<input type="text" v-model='ok'/>-->
+			<span v-if='ok'>www{{ok}}</span>
+		</div>
+		<script>
+			var vm=new Vue({
+				el:'#app',
+				data:{
+					ok:'false'
+				}
+			})
+		</script>
+	</body>
+</html>

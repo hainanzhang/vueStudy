@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .box{
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ddd;
+        margin: 10px;
+    }
+    .red{
+        background: red;
+    }
+    .blue{
+        color: blue;
+    }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <!-- <h1 title="hello world" :title="title">hello vue</h1> -->
+
+
+        <!-- class绑定字符串 -->
+        <div :class="classVal" class="box">test</div>
+
+        <!-- class绑定数组 -->
+        <div class="box" :class="classArr">test</div>
+
+        <!-- class绑定对象 -->
+        <div class="box" :class="classObj"></div>
+
+        <div class="box" :class="{red: isRed}"></div>
+
+        <!-- 组合方式绑定 -->
+        <div :class="['box', {red: false, blue: true}]"></div>
+
+    </div>
+
+    <script src="../vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            title: '千锋教育',
+            classVal: 'red blue',
+            classArr: ['red', 'blue'],
+            classObj: {
+                red: true,
+                blue: false
+            },
+            isRed: true
+        }
+    })
+    </script>
+    
+</body>
+</html>

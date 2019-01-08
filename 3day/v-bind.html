@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="vue.js"></script>
+		<style type="text/css">
+			*{
+				margin: 100px;
+				padding: 0;
+			}
+			.box{
+				height: 100px;
+				width: 100px;
+			}
+			.red{
+				background: red;
+			}
+			.sss{
+				border: 10px solid saddlebrown;
+			}
+		</style>
+	</head>
+	<body>
+		<section id="app">
+			<section v-for='key in arr' class="box" :class='key'></section>
+			<div :style="getStyle">
+				
+			</div>
+			<img :src="getSrc" />
+			<a :href="link">百度</a>
+		</section>
+		<script>
+			
+		</script>
+	</body>
+</html>

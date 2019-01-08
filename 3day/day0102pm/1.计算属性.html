@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <p>
+            a: <input type="number" v-model.number="a">
+        </p>
+        <p>
+            b: <input type="number" v-model.number="b">
+        </p>
+        <!-- <p>求和：{{addAction()}}</p>
+        <p>求和：{{addAction()}}</p>
+        <p>求和：{{addAction()}}</p>
+        <p>求和：{{addAction()}}</p> -->
+
+        <p>求和：{{count}}</p>
+        <p>求和：{{count}}</p>
+        <p>求和：{{count}}</p>
+        <p>求和：{{count}}</p>
+
+    </div>
+
+    <script src="vue.js"></script>
+    <script>
+    var vm = new Vue({
+        el: '#app',
+        // 属性
+        data: {
+            a: 1,
+            b: 2
+        },
+        // 计算属性:也是属性的一种，根据其他属性进行计算得到的新的属性。调用和访问计算属性，当成属性方式访问
+        // 计算属性与方法的不同：
+        // 根据依赖进行缓存,第一次进行计算得到属性值后将结果进行缓存，之后再访问该属性直接使用缓存
+        // 如果依赖的属性发生变化，重新计算再缓存，之后还是使用缓存的值。
+        computed: {
+            count: function(){
+                console.log('计算属性调用了');
+                return this.a + this.b;
+            },
+            type: function(){
+                return this.count % 2 === 0 ? '偶数':'奇数'
+            }
+        },
+        // 方法
+        methods: {
+            addAction: function(){
+                console.log('方法调用了');
+                return this.a + this.b;
+            }
+        }
+    })
+    
+    </script>
+    
+</body>
+</html>
